@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script>
+    // 이걸 뜻하는게 window.load이다 
+    $(function(){
+      //실행순서 1번
+      $("#signal").submit(function(){
+        // 입력칸이 null이거나 공백이면 
+        if( $(".infobox").val()==null || $(".infobox").val()==""){
+          // $(".error").css("display","block");
+          $(".error").show();
+          return false;
+          // 실행내용 취소
+          // return false;를 안하면 계속 새로고침된다.
+        }
+      });
+      $("#confirm").click(function(){
+
+        // 이전내역을 없애는 태그
+        $("#result").empty();
+
+        // 체크가 안되있거나 체크가 0이면
+        if($("input[name=chk]:checked").length == 0){
+          alert("하나 이상 선택해 주세요");
+          // 체크가 있으면 반복을해서 실행할거다
+        }else{
+          $("input[name=chk]:checked").each(function(i){
+            let chk = $("input[name=chk]:checked").eq(i);
+            let book = chk.next().text();
+            let price= chk.val();
+            $("#result").append(book+" 가격: "+price+"<br>");
+            // append <추가한다
+            // innerHTML = val;
+            // innerHTML += val;
+          });
+        }
+      });
+
+      //체크박스가 전체선택 되어진 상태에서 하나라도
+      //체크해제하면 전체선택 버튼의 체크를 해제.
+      $("input[name=chk]").click(function(){
+        // 전체체크 vs 체크된애들
+        if($("input[name=chk]").length != $("input[name=chk]:checked").length){
+          $("input[name=all]").prop("checked",false);
+        }else{
+          $("input[name=all]").prop("checked",true);
+        }
+      });
+
+
+
+    });
+    
+    //prop dom속성이랑 비슷하다
+    // prop 기본값이라도 가져온다
+    // attribute 값이 없으면 undefind가 뜬다
+    // 전체선택누르면 전부다 체크된다
+    function allchk(bool){
+      $("input[name=chk]").each(function(){
+        $(this).prop("checked",bool);
+      });
+    }
+  </script>
+  <!-- 
+    each():반복을하면서 function 실행한다
+   -->
+</head>
+<body>
+  <form id="signal">
+    <div>
+      <span class="label">User Id</span>
+      <input type="text" class="infobox" name="userId">
+      <span class="error" style="color: red; display:none;">반드시 입력하세요!!</span>
+    </div>
+    <input type="submit" class="submit" value="입력하기">
+  </form> 
+
+  <hr>
+  <fieldset style="width: 300px;">
+    <legend>체크 여부 확인</legend>
+    <!-- 체크상태여부를 매게변수로 넘긴다 -->
+    <input type="checkbox" name="all" onclick="allchk(this.checked);">전체선택<br>
+    
+    <input type="checkbox" name="chk" value="20000"><b>java</b><br>
+    <input type="checkbox" name="chk" value="25000"><b>javascript</b><br>
+    <input type="checkbox" name="chk" value="30000"><b>jquery</b><br>
+
+    <input type="button" value="확인" id="confirm"><br>
+    
+    <span><b>선택한 책 가격</b></span>
+    <div id="result"></div>
+  </fieldset>
+</body>
+</html>

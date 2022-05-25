@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script>
+    // $(function)(){} = $(document).ready(function(){})
+    $(document).ready(function(){
+      $("div").find("b").css({"font-size":"30px","color":"red"});
+      // 자손들중에 b태그를 골라 css속성을 준다.
+      
+      $("div").children("#chd").text("2.children()");
+      // 자식중에 #chd id를 가진 아이를 찾아 텍스트를 추가
+
+      $("#chd").parent().css("background-color","skyblue");
+      // p태그의 부모는 div
+
+      $("p>b").parents("body").css("background-color","khaki");
+      // b의 부모들중에 div를 선택해 css속성을 준다.
+      // b의 부모들중에 body를 선택
+
+      $("p").eq(0).next().css({"font-size":"50px","color":"blue"});
+      // 첫번째 p태그를 선택하고 그다음 태그를 선택해css속성적용
+
+      // $("p").eq(0).nextAll().css({"font-size":"50px","color":"blue"});
+      // nextAll 내가 정한 선택의 다음부터 끝까지 css속성을 줄수 있다.
+    });
+  </script>
+</head>
+<body>
+  <pre>
+    <!-- find 전체 -->
+    <b>find("selector") : 선택한 엘리먼트의 자손들 중에 탐색하고자 하는 엘리먼트를 찾는다.</b>
+    <b>children("selector") : 선택한 엘리먼트의 자식요소들 중에 탐색 하고자 하는 엘리먼트를 찾는다.</b>
+    <b>parent()/parents() : 선택한 엘리먼트의 부모요소를 찾는다.</b>
+    <!-- 쉽게 말해 parent 친부모 /parents 부모의부모 -->
+    <b>next("selector") : 선택한 엘리먼트의 다음에 따라오는 요소를 찾는다.</b>
+  </pre>
+  <hr>
+  <div>
+    <p><b>1</b></p>
+    <p id="chd">2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+  </div>
+</body>
+</html>

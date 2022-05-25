@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script>
+    // value 이라고 하면 빈값을 가져고
+    // 메소드로 바꿔서 가져와야된다 그러므로 val()로 가져와야된다.
+    function click01(){
+      let inputVal = $("input:text").val();
+      alert(inputVal);
+    }
+    function click02(){
+      //input태그 타입이 radio를 찾아 value를 id가 view인 div에 넣어보자
+      let doc = $("input[type=radio]").val();
+      //text 써도되고 html 써도된다
+      // $("#view").text("<b>"+doc+"</b>");
+      $("#view").html("<b>"+doc+"</b>");
+      // html = innerHTML
+      //html하면 <b>태그는 먹히는데 text로 <b>를 넣으면 text:<b>로 나온다
+    }
+    function click03(){
+      let inputVal = $("input:checkbox").val();
+      $("#view").html(inputVal);
+    }
+  </script>
+</head>
+<body>
+  <form>
+    <input type="text">
+    <input type="button" value="선택" onclick="click01();">
+    <br>
+    <input type="radio" value="22/04/04~22/08/19" onclick="click02();">22년 4월 4일 ~
+    <input type="checkbox" value="멀티캠퍼스 선릉 504호" onclick="click03();">
+    <div id="view"></div>
+    <!-- element 0개 node 1개 -->
+  </form>
+</body>
+</html>
