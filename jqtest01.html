@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery</title>
+  <!-- 제이쿼리 할때 제일먼저 해야 될건 외부연결 부터 해줘야됨 -->
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script>
+    function test(){
+      $("#list01>li").eq(1).css("background-color","pink");
+      
+    }
+    $(function(){
+        $("img").click(function(){
+          alert("이미지를 클릭했습니다.");
+          $(this).hide();
+          // 여기서 this란 img태그를 뜻한다
+        });
+      });
+
+    function showImg(){
+      $("img").show();
+    }
+
+    function resizeImg(){
+      $("img").css({"width":"100px","height":"100px"});
+    }
+
+    function addImg(){
+      $("img").last().after("<img src='image/img01.png'>");
+    }
+
+    function toggleImg(){
+      $("img").toggle();
+    }
+  </script>
+  <style>
+    img{
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>jquery시작</h1>
+  <!-- jquery는 무조건 외부 연결해서 사용한다
+    1)jquery사이트에 있는걸 다운 받아서 내 비주얼코드에 넣어서 연결
+    2)jquery사이트 주소를 복사해서 사용할수 있다
+  -->
+  <ul id="list01">
+    <li>1. 셀렉터 표현식</li>
+    <li>2. DOM 탐색</li>
+    <li>3. 이벤트</li>
+    <li>4. 이펙트</li>
+    <li>5. Ajax</li>
+  </ul>
+  <button onclick="test();">리스트 강조하기</button>
+  <hr>
+  <button onclick="showImg()">이미지 보여주기</button>
+  <button onclick="resizeImg()">이미지 크기변경</button>
+  <button onclick="addImg()">이미지 추가</button>
+  <button onclick="toggleImg()">이미지 보이기/안보이기</button>
+  <br><br>
+    <div>
+      <img alt="test" src="image/img01.png">
+    </div>
+</body>
+</html>

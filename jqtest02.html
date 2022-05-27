@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery 태그 선택하는방법</title>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("div:eq(0)").css({"border":"1px solid red","width":"400px","height":"200px"});
+    
+      $("div:eq(2)").css({"border": "1px solid black","width":"300px","height":"200px"});
+    });
+
+
+    function a1(){
+      $("span").eq(0).css("background-color","aqua");
+
+      $("#view").text("Hello");
+    };
+
+    function a2(){
+
+    }
+  </script>
+</head>
+<body>
+  <h1>selector 표현식</h1>
+  <div>
+    <ul>
+      <li><span>tag로 선택하기</span></li>
+      <li id="t1">id로 선택하기</li>
+      <li class="t2">class로 선택하기</li>
+      <li><span>parent child로 선택하기</span></li>
+      <li><b><span>parent &gt; child</span></b></li>
+      <!-- 부모의 자식으로 선택 -->
+      <li>:nth-child(n/odd/even)로 선택하기</li>
+      <li>:first-child로 선택하기</li>
+      <li>last-child로 선택하기</li>
+    </ul>
+  </div>
+  <br>
+  <div>
+    <button onclick="a1();">태그선택(span)</button>
+    <button onclick="a2();">id선택(t1)</button>
+    <button onclick="a3();">class선택(t2)</button>
+    <button onclick="a4();">p c 선택</button>
+    <button onclick="a5();">p &gt; c 선택</button>
+    <button onclick="a6();">nth-child 선택</button>
+    <button onclick="a7();">first-child 선택</button>
+    <button onclick="a8();">last-child 선택</button>
+  </div>
+  <div id="view"></div>
+</body>
+</html>
